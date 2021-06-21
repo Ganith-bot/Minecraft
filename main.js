@@ -1,8 +1,8 @@
 var canvas= new fabric.Canvas("myCanvas");
 var block_width= 30;
 var block_heigth= 30;
-var player_x= 100;
-var player_y= 100;
+var player_x= 10;
+var player_y= 10;
 var player_object="";
 var block_object="";
 var block_x=50;
@@ -33,3 +33,140 @@ function block_call(get_image){
  }
     );
  }
+
+ window.addEventListener("keydown",keydown1);
+
+function keydown1(e){
+   var keys=e.keyCode;
+   console.log(keys);
+
+   if (e.shiftKey==true && keys=='80'){
+      console.log("P and Shift key has been pressed")
+      block_heigth=block_heigth+15;
+      block_width=block_width+15;
+      document.getElementById("wide1").innerHTML=block_width;
+      document.getElementById("lenght1").innerHTML=block_heigth;
+   }
+
+   if (e.shiftKey==true && keys=='77'){
+      console.log("M and Shift key has been pressed")
+      block_heigth=block_heigth-15;
+      block_width=block_width-15;
+      document.getElementById("wide1").innerHTML=block_width;
+      document.getElementById("lenght1").innerHTML=block_heigth;
+   }
+
+   if (keys=='67'){
+      block_call("cloud.jpg");
+      console.log("C has been pressed"+keys);
+   }
+
+   if (keys=='68'){
+      block_call("dark_green.png");
+      console.log("D has been pressed"+keys);
+   }
+
+   if (keys=='71'){
+      block_call("ground.png");
+      console.log("G has been pressed"+keys);
+   }
+
+   if (keys=='76'){
+      block_call("light_green.png");
+      console.log("L has been pressed"+keys);
+   }
+   /*
+   if (keys=='80'){
+      block_call("player.png");
+      console.log("P has been pressed"+keys);
+   }
+   */                
+   if (keys=='82'){
+      block_call("roof.jpg");
+      console.log("R has been pressed"+keys);
+   }
+
+   if (keys=='84'){
+      block_call("trunk.jpg");
+      console.log("T has been pressed"+keys);
+   }
+
+   if (keys=='85'){
+      block_call("unique.png");
+      console.log("U has been pressed"+keys);
+   }
+
+   if (keys=='87'){
+      block_call("wall.jpg");
+      console.log("W has been pressed"+keys);
+   }
+
+   if (keys=='89'){
+      block_call("yello_wall.png");
+      console.log("Y has been pressed"+keys);
+   }
+
+   if (keys=='38'){
+      go_up();
+      console.log("UP arrow has been pressed"+keys);
+   }
+
+   if (keys=='40'){
+      down();
+      console.log("DOWN arrow has been pressed"+keys);
+   }
+
+   if (keys=='37'){
+      go_left();
+      console.log("LEFT arrow has been pressed"+keys);
+   }
+
+   if (keys=='39'){
+      right();
+      console.log("RIGHT arrow has been pressed"+keys);
+   }
+}
+
+function right(e) {
+   if (player_x<=799){
+       player_x=player_x+10;
+       console.log("Player has moved to the RIGHT"+player_x);
+       console.log("Player has moved to _____"+player_y);
+       canvas.remove(player_object);
+       player_call();
+   }
+
+}
+
+function go_left(e) {
+   if (player_x>0){
+       player_x=player_x-10;
+       console.log("Player has moved to the LEFT"+player_x);
+       console.log("Player has moved to _____"+player_y);
+       canvas.remove(player_object);
+       player_call();
+   }
+
+}
+
+function go_up(e) {
+   if (player_y>0){
+       player_y=player_y-10;
+       console.log("Player has moved to the UP"+player_y);
+       console.log("Player has moved to _____"+player_x);
+       canvas.remove(player_object);
+       player_call();
+   }
+
+}
+
+function down(e) {
+   if (player_y<=599){
+       player_y=player_y+10;
+       console.log("Player has moved to the DOWN"+player_y);
+       console.log("Player has moved to _____"+player_x);
+       canvas.remove(player_object);
+       player_call();
+   }
+
+}
